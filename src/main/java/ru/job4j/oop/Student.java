@@ -7,13 +7,10 @@ public class Student {
     }
 
     public static void main(String[] args) {
-        Student petya = new Student();
-        petya.music();
-        petya.music();
-        petya.music();
-        petya.song();
-        petya.song();
-        petya.song();
+        Jukebox jukebox = new Jukebox();
+        jukebox.music(3);
+        jukebox.music(2);
+        jukebox.music(1);
     }
 
     public void song() {
