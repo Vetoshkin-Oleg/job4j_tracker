@@ -12,6 +12,18 @@ public class Calculator {
         return y - x;
     }
 
+    public int multiply(int a) {
+        return x * a;
+    }
+
+    public double divide(int a) {
+        return a / (double) x;
+    }
+
+    public double sumAllOperation(int a) {
+        return sum(a) + multiply(a) + minus(a) + divide(a);
+    }
+
     public static void main(String[] args) {
         int resultSum = Calculator.sum(10);
         System.out.println(resultSum);
@@ -24,18 +36,6 @@ public class Calculator {
         System.out.println(rslDivide);
         double rslSumAll = calculator.sumAllOperation(54);
         System.out.println(rslSumAll);
-    }
-
-    public int multiply(int a) {
-        return x * a;
-    }
-
-    public double divide(int a) {
-        return a / (double) x;
-    }
-
-    public double sumAllOperation(int a) {
-        return sum(a) + multiply(a) + minus(a) + divide(a);
     }
 
 }
