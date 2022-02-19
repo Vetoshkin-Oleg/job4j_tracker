@@ -21,7 +21,6 @@ public class Shop {
                 return count;
             } else {
                 count++;
-                continue;
             }
         }
         return -1;
