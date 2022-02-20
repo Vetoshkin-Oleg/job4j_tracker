@@ -15,12 +15,9 @@ public class Shop {
     }
 
     public static int indexOfNull(Product[] products) {
-        int count = 0;
-        for (Product x : products) {
-            if (x == null) {
-                return count;
-            } else {
-                count++;
+        for (int i = 0; i < products.length; i++) {
+            if (products[i] == null) {
+                return i;
             }
         }
         return -1;
