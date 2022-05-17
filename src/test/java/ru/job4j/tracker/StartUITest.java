@@ -22,15 +22,14 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
         assertThat(out.toString(), is(
-                "Menu:" + ln
+                        "Menu." + ln
                         + "0. Edit item" + ln
-                        + "1. Exit Program" + ln
+                        + "1. Exit" + ln
                         + "=== Edit item ===" + ln
                         + "Заявка изменена успешно." + ln
-                        + "Menu:" + ln
+                        + "Menu." + ln
                         + "0. Edit item" + ln
-                        + "1. Exit Program" + ln
-                        + "=== Exit Program ===" + ln
+                        + "1. Exit" + ln
         ));
     }
 
