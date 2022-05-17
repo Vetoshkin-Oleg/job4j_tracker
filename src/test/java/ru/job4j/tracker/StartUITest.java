@@ -17,7 +17,7 @@ public class StartUITest {
         );
         UserAction[] actions = new UserAction[]{
                 new EditAction(out),
-                new Exit()
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -42,7 +42,7 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new Exit()
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
