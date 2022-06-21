@@ -6,7 +6,6 @@ import java.util.Set;
 
 public class UniqueText {
     public static boolean isEquals(String originText, String duplicateText) {
-        boolean rsl = true;
         String[] origin = originText.split(" ");
         String[] text = duplicateText.split(" ");
         Set<String> set = new HashSet<>();
@@ -16,6 +15,6 @@ public class UniqueText {
                 return false;
             }
         }
-        return rsl;
+        return true;
     }
 }
