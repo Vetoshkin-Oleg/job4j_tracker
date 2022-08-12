@@ -14,21 +14,17 @@ class ItemAscByNameTest {
         Item item2 = new Item(2, "two");
         Item item6 = new Item(6, "six");
         Item item4 = new Item(4, "four");
-
         List<Item> items = new ArrayList<>();
         items.add(item1);
         items.add(item2);
         items.add(item6);
         items.add(item4);
         items.sort(new ItemAscByName());
-
         List<Item> expected = new ArrayList<>();
         expected.add(item4);
         expected.add(item1);
         expected.add(item6);
         expected.add(item2);
-
         Assertions.assertEquals(expected, items);
-
     }
 }
