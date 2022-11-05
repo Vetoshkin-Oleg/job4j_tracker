@@ -1,7 +1,11 @@
 package ru.job4j.lambda;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
+
+import static java.util.Arrays.sort;
 
 public class FI {
     public static void main(String[] args) {
@@ -12,28 +16,18 @@ public class FI {
         };
         Comparator<Attachment> comparator = (left, right) -> Integer.compare(left.getSize(), right.getSize());
 
-        Arrays.sort(atts, comparator);
+        sort(atts, comparator);
         for (Attachment att : atts) {
             System.out.println(att);
         }
 
-        Comparator<Attachment> cmpText = (left, right) ->
-                (left.getName()).compareTo((right.getName()));
+        Comparator<String> cmpText = (left, right) -> {
+            return left.compareTo(right);
+        };
 
-        System.out.println();
-        Arrays.sort(atts, cmpText);
-        for (Attachment att : atts) {
-            System.out.println(att);
-        }
+        Comparator<String> cmpDescSize = (left, right) -> {
+            return Integer.compare(right.length(), left.length());
+        };
 
-        Comparator<Attachment> cmpDescSize = (left, right) ->
-                Integer.compare(right.getName().length(), left.getName().length());
-
-        System.out.println();
-        Arrays.sort(atts, cmpDescSize);
-        for (Attachment att : atts) {
-            System.out.println(att);
-        }
     }
-
 }
