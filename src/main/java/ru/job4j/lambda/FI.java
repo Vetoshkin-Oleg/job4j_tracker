@@ -1,8 +1,5 @@
 package ru.job4j.lambda;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 
 import static java.util.Arrays.sort;
@@ -21,13 +18,9 @@ public class FI {
             System.out.println(att);
         }
 
-        Comparator<String> cmpText = (left, right) -> {
-            return left.compareTo(right);
-        };
+        Comparator<String> cmpText = (left, right) -> left.compareTo(right);
 
-        Comparator<String> cmpDescSize = (left, right) -> {
-            return Integer.compare(right.length(), left.length());
-        };
+        Comparator<String> cmpDescSize = (left, right) -> Integer.compare(right.length(), left.length());
 
     }
 }
