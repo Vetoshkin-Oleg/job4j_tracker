@@ -8,15 +8,10 @@ public class ProductLabel {
     public List<String> generateLabels(List<Product> products) {
         return products.stream()
                 .filter(Objects::nonNull)
-                .filter(product -> (product.getStandard() - product.getActual() > 0)
-                        || (product.getStandard() - product.getActual() == 0))
-                .filter(product -> (product.getStandard() - product.getActual() < 3)
-                        || (product.getStandard() - product.getActual() == 3))
-                .map(product -> {
-                    Label label = new Label(product.getName(), (float) (product.getPrice() * 0.5));
-                    return label;
-                })
-                .map(label -> label.toString())
+                .filter(product -> (product.getStandard() - product.getActual() >= 0))
+                .filter(product -> (product.getStandard() - product.getActual() <= 3))
+                .map(product -> new Label(product.getName(), (float) (product.getPrice() * 0.5)))
+                .map(Label::toString)
                 .collect(Collectors.toList());
     }
 }
