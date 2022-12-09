@@ -10,7 +10,7 @@ public class Analyze {
         List<Integer> list = (List<Integer>) stream.map(o -> o.subjects())
                 .flatMap(o -> o.stream())
                 .mapToInt(o -> o.score())
-                        .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         System.out.println(list);
         return 0D;
