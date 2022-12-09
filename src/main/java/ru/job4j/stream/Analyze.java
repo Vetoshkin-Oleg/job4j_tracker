@@ -7,12 +7,12 @@ import java.util.stream.Stream;
 
 public class Analyze {
     public static double averageScore(Stream<Pupil> stream) {
-        List<Integer> list = (List<Integer>) stream.map(o -> o.subjects())
+        /* List<Integer> list = (List<Integer>) stream.map(o -> o.subjects())
                 .flatMap(o -> o.stream())
                 .mapToInt(o -> o.score())
                 .collect(Collectors.toList());
 
-        System.out.println(list);
+        System.out.println(list); */
         return 0D;
 
     }
