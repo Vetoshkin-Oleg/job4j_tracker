@@ -33,11 +33,11 @@ public class StartUI {
         }
     }
 
+    /*Вариант метода main для MemTracker
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        Store tracker = new SqlTracker();
-
+        Store tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(output));
         actions.add(new ShowAllAction(output));
@@ -48,5 +48,27 @@ public class StartUI {
         actions.add(new Exit(output));
 
         new StartUI(output).init(input, tracker, actions);
+    }*/
+
+    /*Вариант метода main для SqlTracker*/
+    public static void main(String[] args) {
+        Output output = new ConsoleOutput();
+        Input input = new ValidateInput(output, new ConsoleInput());
+
+        try (Store tracker = new SqlTracker()) {
+            List<UserAction> actions = List.of(
+                    new CreateAction(output),
+                    new ShowAllAction(output),
+                    new EditAction(output),
+                    new DeleteAction(output),
+                    new FindByIdAction(output),
+                    new FindByNameAction(output),
+                    new Exit(output)
+            );
+
+            new StartUI(output).init(input, tracker, actions);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
