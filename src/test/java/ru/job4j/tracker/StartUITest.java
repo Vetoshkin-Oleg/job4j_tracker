@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.*;
 
@@ -156,5 +157,50 @@ public class StartUITest {
                                 + "0. Exit" + ln
                 )
         );
+    }
+
+    @Test
+    public void whenCreateItem() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"0", "Item name", "1"}
+        );
+        Store tracker = new MemTracker();
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new CreateAction(out));
+        actions.add(new Exit(out));
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findAll().get(0).getName(), is("Item name"));
+    }
+
+    @Test
+    public void whenReplaceItem() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        Item item = tracker.add(new Item("Replaced item"));
+        String replacedName = "New item name";
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf(item.getId()), "New item name", "1"}
+        );
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new EditAction(out));
+        actions.add(new Exit(out));
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
+    }
+
+    @Test
+    public void whenDeleteItem() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        Item item = tracker.add(new Item("Deleted item"));
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf(item.getId()), "1"}
+        );
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new DeleteAction(out));
+        actions.add(new Exit(out));
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
 }
