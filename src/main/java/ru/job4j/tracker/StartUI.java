@@ -2,7 +2,6 @@ package ru.job4j.tracker;
 
 import ru.job4j.tracker.store.SqlTracker;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class StartUI {
@@ -63,6 +62,8 @@ public class StartUI {
                     new DeleteAction(output),
                     new FindByIdAction(output),
                     new FindByNameAction(output),
+                    new CreateManyItems(output),
+                    new DeleteAllItems(output),
                     new Exit(output)
             );
 
