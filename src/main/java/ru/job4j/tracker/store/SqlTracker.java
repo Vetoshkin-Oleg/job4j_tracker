@@ -133,18 +133,18 @@ public class SqlTracker implements Store {
     @Override
     public Item findById(int id) {
         Item item = null;
-        try (PreparedStatement statement = cn.prepareStatement("SELECT * FROM items WHERE id = ?")) {
+        try (PreparedStatement statement = cn.prepareStatement("SELECT * FROM items WHERE id = ?;")) {
             statement.setInt(1, id);
+            statement.execute();
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    item = new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()
-                    );
+                    if (resultSet.getInt("id") == id) {
+                        item = new Item(resultSet.getInt("id"), resultSet.getString("name"),
+                                resultSet.getTimestamp("created").toLocalDateTime());
+                    }
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return item;
