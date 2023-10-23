@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Post {
 
-    private Integer id;
+    private int id;
 
     private final String text;
 
     private final List<Comment> comments;
 
-    public Post(Integer id, String text, List<Comment> comments) {
+    public Post(int id, String text, List<Comment> comments) {
         this.id = id;
         this.text = text;
         this.comments = comments;
@@ -21,7 +21,7 @@ public class Post {
         this.comments = comments;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -35,10 +35,5 @@ public class Post {
 
     public List<Comment> getComments() {
         return comments;
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
     }
 }
