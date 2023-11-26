@@ -1,6 +1,8 @@
 package ru.job4j.tracker;
 
-public class CreateManyItems implements UserAction {
+import ru.job4j.tracker.action.User;
+
+public class CreateManyItems implements User {
     private final Output out;
 
     public CreateManyItems(Output out) {

@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+import ru.job4j.tracker.action.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,8 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
         );
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new EditAction(out));
+        List<User> actions = new ArrayList<>();
+        actions.add(new Edit(out));
         actions.add(new Exit(out));
 
         new StartUI(out).init(in, tracker, actions);
@@ -46,7 +47,7 @@ public class StartUITest {
         );
         Store tracker = new MemTracker();
 
-        List<UserAction> actions = new ArrayList<>();
+        List<User> actions = new ArrayList<>();
         actions.add(new Exit(out));
 
         new StartUI(out).init(in, tracker, actions);
@@ -64,8 +65,8 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
 
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new ShowAllAction(out));
+        List<User> actions = new ArrayList<>();
+        actions.add(new ShowAll(out));
         actions.add(new Exit(out));
 
         new StartUI(out).init(in, tracker, actions);
@@ -91,8 +92,8 @@ public class StartUITest {
                 new String[] {"0", one.getName(), "1"}
         );
 
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new FindByNameAction(out));
+        List<User> actions = new ArrayList<>();
+        actions.add(new FindByName(out));
         actions.add(new Exit(out));
 
         new StartUI(out).init(in, tracker, actions);
@@ -118,8 +119,8 @@ public class StartUITest {
                 new String[] {"0", String.valueOf(one.getId()), "1"}
         );
 
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new FindByIdAction(out));
+        List<User> actions = new ArrayList<>();
+        actions.add(new FindById(out));
         actions.add(new Exit(out));
 
         new StartUI(out).init(in, tracker, actions);
@@ -144,7 +145,7 @@ public class StartUITest {
         );
         Store tracker = new MemTracker();
 
-        List<UserAction> actions = new ArrayList<>();
+        List<User> actions = new ArrayList<>();
         actions.add(new Exit(out));
 
         new StartUI(out).init(in, tracker, actions);
@@ -166,8 +167,8 @@ public class StartUITest {
                 new String[] {"0", "Item name", "1"}
         );
         Store tracker = new MemTracker();
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new CreateAction(out));
+        List<User> actions = new ArrayList<>();
+        actions.add(new Create(out));
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findAll().get(0).getName(), is("Item name"));
@@ -182,8 +183,8 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "New item name", "1"}
         );
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new EditAction(out));
+        List<User> actions = new ArrayList<>();
+        actions.add(new Edit(out));
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
@@ -197,8 +198,8 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new DeleteAction(out));
+        List<User> actions = new ArrayList<>();
+        actions.add(new Delete(out));
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));

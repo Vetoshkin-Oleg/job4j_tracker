@@ -1,11 +1,13 @@
 package ru.job4j.tracker;
 
+import ru.job4j.tracker.action.User;
+
 import java.util.List;
 
-public class ShowAllAction implements UserAction {
+public class ShowAll implements User {
     private final Output out;
 
-    public ShowAllAction(Output out) {
+    public ShowAll(Output out) {
         this.out = out;
     }
 
