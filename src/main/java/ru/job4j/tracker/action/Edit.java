@@ -2,7 +2,7 @@ package ru.job4j.tracker.action;
 
 import ru.job4j.tracker.*;
 
-public class Edit implements User {
+public class Edit implements UserAction {
     private final Output out;
 
     public Edit(Output out) {

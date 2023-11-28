@@ -12,7 +12,7 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Store tracker, List<User> actions) {
+    public void init(Input input, Store tracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
@@ -21,12 +21,12 @@ public class StartUI {
                 out.println("Wrong input, you can select: 0 .. " + (actions.size() - 1));
                 continue;
             }
-            User action = actions.get(select);
+            UserAction action = actions.get(select);
             run = action.execute(input, tracker);
         }
     }
 
-    private void showMenu(List<User> actions) {
+    private void showMenu(List<UserAction> actions) {
         out.println("Menu.");
         for (int index = 0; index < actions.size(); index++) {
             out.println(index + ". " + actions.get(index).name());
@@ -56,7 +56,7 @@ public class StartUI {
         Input input = new ValidateInput(output, new ConsoleInput());
 
         try (Store tracker = new SqlTracker()) {
-            List<User> actions = List.of(
+            List<UserAction> actions = List.of(
                     new Create(output),
                     new ShowAll(output),
                     new Edit(output),

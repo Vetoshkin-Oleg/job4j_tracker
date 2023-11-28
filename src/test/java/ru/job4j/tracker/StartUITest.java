@@ -21,7 +21,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
         );
-        List<User> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new Edit(out));
         actions.add(new Exit(out));
 
@@ -47,7 +47,7 @@ public class StartUITest {
         );
         Store tracker = new MemTracker();
 
-        List<User> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new Exit(out));
 
         new StartUI(out).init(in, tracker, actions);
@@ -65,7 +65,7 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
 
-        List<User> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new ShowAll(out));
         actions.add(new Exit(out));
 
@@ -92,7 +92,7 @@ public class StartUITest {
                 new String[] {"0", one.getName(), "1"}
         );
 
-        List<User> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new FindByName(out));
         actions.add(new Exit(out));
 
@@ -119,7 +119,7 @@ public class StartUITest {
                 new String[] {"0", String.valueOf(one.getId()), "1"}
         );
 
-        List<User> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new FindById(out));
         actions.add(new Exit(out));
 
@@ -145,7 +145,7 @@ public class StartUITest {
         );
         Store tracker = new MemTracker();
 
-        List<User> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new Exit(out));
 
         new StartUI(out).init(in, tracker, actions);
@@ -167,7 +167,7 @@ public class StartUITest {
                 new String[] {"0", "Item name", "1"}
         );
         Store tracker = new MemTracker();
-        List<User> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new Create(out));
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
@@ -183,7 +183,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "New item name", "1"}
         );
-        List<User> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new Edit(out));
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
@@ -198,7 +198,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
-        List<User> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new Delete(out));
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);

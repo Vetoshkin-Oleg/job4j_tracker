@@ -4,7 +4,7 @@ import ru.job4j.tracker.*;
 
 import java.util.Objects;
 
-public class FindById implements User {
+public class FindById implements UserAction {
     private final Output out;
 
     public FindById(Output out) {
